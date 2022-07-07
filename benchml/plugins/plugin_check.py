@@ -90,6 +90,19 @@ def check_rdkit_available(obj, require=False):
         return False
     return True
 
+try:
+    import deepchem  
+except ImportError:
+    deepchem = None
+
+
+def check_deepchem_available(obj, require=False):
+    if deepchem is None :
+        if require:
+            raise ImportError("'%s' requires deepchem" % obj.__class__.__name__)
+        return False
+    return True
+
 
 try:
     import torch

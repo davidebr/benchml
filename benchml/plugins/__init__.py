@@ -7,3 +7,4 @@ from benchml.plugins.plugin_physchem import *  # noqa: F401, F403
 from benchml.plugins.plugin_rdkit import *  # noqa: F401, F403
 from benchml.plugins.plugin_soap import *  # noqa: F401, F403
 from benchml.plugins.plugin_torch import *  # noqa: F401, F403
+from benchml.plugins.plugin_deepchem import *  # noqa: F401, F403

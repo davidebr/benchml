@@ -1,4 +1,5 @@
 from benchml.predictors.gaussian_process import GaussianProcess, ResidualGaussianProcess
+from benchml.predictors.pred_deepchem import GCNNBinaryClassifier
 from benchml.predictors.pred_sklearn import (
     AdaBoost,
     ElasticNet,
@@ -45,4 +46,5 @@ __all__ = [
     "RidgeClassifier",
     "SklearnTransform",
     "SupportVectorClassifier",
+    "GCNNBinaryClassifier",
 ]
