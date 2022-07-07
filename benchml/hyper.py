@@ -61,9 +61,12 @@ class GridHyper(object):
             return merged
 
         return merge(*[h.random() for h in self.hypers])
+    
+    def scan(self, module, stream, split_args, accu_args, target, target_ref, log=None, **kwargs):
+        return self.optimize(module, stream, split_args, accu_args, target, target_ref, log=log, return_cache=True, **kwargs)
 
     def optimize(
-        self, module, stream, split_args, accu_args, target, target_ref, log=None, **kwargs
+        self, module, stream, split_args, accu_args, target, target_ref, log=None, return_cache=False, **kwargs
     ):
         update_cache = []
         fields = self.getFields()
@@ -109,6 +112,8 @@ class GridHyper(object):
                     + "|"
                     << log.endl
                 )
+        if return_cache:
+            return update_cache
         update_cache = sorted(update_cache, key=lambda cache: cache["metric"])
         best = (
             update_cache[0] if (Accumulator.select(**accu_args) == "smallest") else update_cache[-1]

@@ -894,6 +894,13 @@ class Module(TransformBase):
         self.hyperUpdate(updates)
         return self.fit(stream, verbose=verbose)
 
+    def hyperscan(self, stream, log=None, verbose=False, **kwargs):
+        if self.hyper is None:
+            raise ValueError("<Module.hyperfit>: Hyper configuration is missing")
+        if log:
+            log << "Hyperscan" << self.tag << "on stream" << stream.tag << log.endl
+        return self.hyper.scan(self, stream, log=log, **kwargs)
+    
     def hyperEval(self, stream, updates, split_args, accu_args, target, target_ref, verbose=None):
         if verbose is None:
             verbose = VERBOSE
